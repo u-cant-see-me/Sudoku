@@ -1,6 +1,6 @@
 import React from 'react'
 import { BsFillPlayFill } from 'react-icons/bs';
-import { SIZE } from '../../utils/Constants';  
+import { SIZE } from '../../utils/constants';  
 
 const SectionGridOverlay = ({state,setState}) => {
 

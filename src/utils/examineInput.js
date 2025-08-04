@@ -1,4 +1,4 @@
-import { SIZE } from "./Constants";
+import { SIZE } from "./constants";
 
 const examineInput = (board,cell,value) => {
     if(value === null) return true;

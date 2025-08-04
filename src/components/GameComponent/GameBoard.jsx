@@ -1,7 +1,7 @@
 import Boxes from './Boxes'
 import SectionGridOverlay from './SectionGridOverlay';
-import { highlightMatchingValues } from '../../utils/ExamineInput';
-import { highlight } from '../../utils/Highlight';
+import { highlightMatchingValues } from '../../utils/examineInput';
+import { highlight } from '../../utils/highlight';
 
 
 export const GameBoard = ({setactiveCell,state,setState,board,setboard}) => {

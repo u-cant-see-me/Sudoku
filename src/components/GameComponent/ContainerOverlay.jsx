@@ -1,4 +1,4 @@
-import sudokuSolver from '../../utils/SudokuSolver';
+import sudokuSolver from '../../utils/sudokuSolver';
 
 const ContainerOverlay = ({result,setState,setboard,savedBoardState,restartGame,setSolutionUsed}) => {
 
