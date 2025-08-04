@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import GameContainer from './GameComponent/GameContainer'
 import LevelBar from './GameComponent/LevelBar';
-import { DIFFICULTY_LEVELS } from '../utils/constants';
+import { DIFFICULTY_LEVELS } from '../utils/Constants';
 
 const Main = () => {
     const [levels, setlevels] = useState(DIFFICULTY_LEVELS);

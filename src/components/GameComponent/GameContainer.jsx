@@ -1,15 +1,15 @@
 import React, { useState ,useEffect, useRef} from 'react'
 import { GameBoard } from './GameBoard'
 import GameControls from './GameControls/GameControls'
-import examineInput, { highlightMatchingValues, highlightWrongCells } from '../../utils/examineInput';
-import Stack from '../../utils/stack';
-import { highlight } from '../../utils/highlight';
-import initBoard from '../../utils/initBoard';
-import createPuzzle from '../../utils/createPuzzle';
-import {wait,isCurrentSectionFilled} from '../../utils/utils';
+import examineInput, { highlightMatchingValues, highlightWrongCells } from '../../utils/ExamineInput';
+import Stack from '../../utils/Stack';
+import { highlight } from '../../utils/Highlight';
+import initBoard from '../../utils/InitBoard';
+import createPuzzle from '../../utils/CreatePuzzle';
+import {wait,isCurrentSectionFilled} from '../../utils/Utils';
 import ContainerOverlay from './ContainerOverlay';
-import sudokuSolver from '../../utils/sudokuSolver';
-import { SIZE } from '../../utils/constants';
+import sudokuSolver from '../../utils/SudokuSolver';
+import { SIZE } from '../../utils/Constants';
 
 const GameContainer = ({level}) => {
 

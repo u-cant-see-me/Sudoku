@@ -1,6 +1,3 @@
-import React from 'react'
-import initBoard from '../../../utils/initBoard'
-
 const NewGameBtn = ({restartGame}) => {
   return (
     <button type="button"

@@ -1,5 +1,5 @@
-import examineInput from "./examineInput";
-import initBoard from "./initBoard";
+import examineInput from "./ExamineInput";
+import initBoard from "./InitBoard";
 
 const size = 9;
 const sudokuSolver = (board) => {

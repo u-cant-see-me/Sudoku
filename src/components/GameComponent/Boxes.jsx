@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Boxes = ({onClick,boxprop}) => {
 
   const highlightClass = boxprop.highlighted?"bg-indigo-100/100":"";

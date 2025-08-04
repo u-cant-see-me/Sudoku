@@ -1,5 +1,4 @@
-import React from 'react'
-import sudokuSolver from '../../utils/sudokuSolver';
+import sudokuSolver from '../../utils/SudokuSolver';
 
 const ContainerOverlay = ({result,setState,setboard,savedBoardState,restartGame,setSolutionUsed}) => {
 
