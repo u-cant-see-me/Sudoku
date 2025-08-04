@@ -1,4 +1,3 @@
-import React from 'react'
 import NewGameBtn from './NewGameBtn'
 import GameBar from './GameBar'
 const GameControls = ({updateBoard,mistakes,Undo,Erase,

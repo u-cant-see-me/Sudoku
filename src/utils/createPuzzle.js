@@ -1,5 +1,5 @@
 import examineInput from "./examineInput";
-import initBoard, { puzzleBoard } from "./initBoard"
+import { puzzleBoard } from "./initBoard"
 
 const size = 9;
 

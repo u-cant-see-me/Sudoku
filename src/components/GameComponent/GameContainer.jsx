@@ -2,11 +2,11 @@ import React, { useState ,useEffect, useRef} from 'react'
 import { GameBoard } from './GameBoard'
 import GameControls from './GameControls/GameControls'
 import examineInput, { highlightMatchingValues, highlightWrongCells } from '../../utils/examineInput';
-import Stack from '../../utils/stack';
+import Stack from '../../utils/Stack';
 import { highlight } from '../../utils/highlight';
 import initBoard from '../../utils/initBoard';
 import createPuzzle from '../../utils/createPuzzle';
-import {wait,isCurrentSectionFilled} from '../../utils/Utils';
+import {wait,isCurrentSectionFilled} from '../../utils/utils';
 import ContainerOverlay from './ContainerOverlay';
 import sudokuSolver from '../../utils/sudokuSolver';
 import { SIZE } from '../../utils/constants';
