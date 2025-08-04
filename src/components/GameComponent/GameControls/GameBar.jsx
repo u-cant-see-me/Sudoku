@@ -47,7 +47,8 @@ const GameBar = ({mistakes,Undo,Erase,state,setState,resetSignal,hints,addHint})
   ]
 
   return (
-    <div className=' flex gap-4 mb-2'>
+    <div className='flex flex-wrap sm:flex-nowrap gap-4 md:block xl:flex'>
+        <div className=' flex gap-4 mb-2'>
 
       {
         buttons.map((btn,index) => (
@@ -59,13 +60,16 @@ const GameBar = ({mistakes,Undo,Erase,state,setState,resetSignal,hints,addHint})
           >{btn.icon}</button>
       ))
       }
+    </div>
+    <div className='flex gap-4 mb-2'>
       <Mistakes mistakes={mistakes}/>
       <Timer state={state}
             setState={setState}
             resetSignal={resetSignal}
           />
-
     </div>
+    </div>
+
   )
 }
 

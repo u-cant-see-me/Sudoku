@@ -8,7 +8,7 @@ const Main = () => {
     const [activeLevel, setactiveLevel] = useState("Easy");
     
   return (
-    <div className=' px-16 py-4'>
+    <div className='px-6 sm:px-16 md:px-4 lg:px-16 py-4'>
         <LevelBar
             levels={levels}
             activeLevel={activeLevel}

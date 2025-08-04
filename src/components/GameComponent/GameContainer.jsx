@@ -240,7 +240,7 @@ const GameContainer = ({level}) => {
   }
 
   const addHint = () => {
-    if(hints <= 0) return;
+    if(hints <= 0 || currentGameState === "pause") return;
     
     setHints(prev => prev - 1);
     let cell ;
@@ -283,8 +283,10 @@ const GameContainer = ({level}) => {
   }
 
   return (
-    <div className='relative grid grid-cols-[60%_40%] 
-                    lg:w-[80%] lg:pr-40 pt-2'>
+    <div className='relative 
+                    md:grid md:grid-cols-[60%_40%] 
+                    lg:grid lg:grid-cols-[60%_40%] 
+                    lg:w-[80%] xl:pr-40 '>
         <GameBoard
         activeCell={activeCell}
         setactiveCell={setactiveCell}

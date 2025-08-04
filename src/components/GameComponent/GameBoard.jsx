@@ -18,8 +18,8 @@ export const GameBoard = ({setactiveCell,state,setState,board,setboard}) => {
 
 
   return (
-    <div className='relative
-                    lg: h-112 mr-4'
+    <div className='relative h-112
+                    sm:h-118 xl:h-112 md:mr-4'
       >
       <div className='h-full w-full grid grid-cols-9 grid-rows-9 
                 border-2 border-black
