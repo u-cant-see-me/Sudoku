@@ -64,7 +64,7 @@ const GameContainer = ({level}) => {
     },[level]);
       
     useEffect(() => {
-      if((mistakes/2)>= 5){
+      if(mistakes>= 5){
         savedBoardState.current = board;
         setResult("lost");       
         setCurrentGameState("over");
