@@ -10,13 +10,13 @@ Includes smart features like cell highlighting, input validation, undo, hints, a
 ## ✨ Features
 
 - ✅ Sudoku board with random puzzle generation
-- 🎯 Multiple difficulty levels
 - 🎯 Real-time input validation (shows wrong numbers)
+- 🎯 Multiple difficulty levels
 - 🔄 Undo feature
 - 💡 Hint system
 - 🟨 Highlight matching numbers
 - 🧠 Victory detection and animation
-- 🧑‍💻 Clean responsive UI, playable on desktop
+- 📱 Responsive design – works on mobile too!
 
 ---
 
