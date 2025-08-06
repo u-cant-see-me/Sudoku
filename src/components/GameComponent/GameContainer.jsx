@@ -138,12 +138,18 @@ const GameContainer = ({level}) => {
     }
 
   const Erase = () => {
+
+    if(currentGameState === "pause") return;
+
     if(activeCell.value !== null){
       updateBoard(null,false, true);  
     }    
   }
 
   const Undo = () => {
+    
+    if(currentGameState === "pause") return;
+
     if(!cellStackRef.current.isEmpty()){
 
       const currentCell = cellStackRef.current.pop();
