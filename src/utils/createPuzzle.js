@@ -1,25 +1,19 @@
+import { SIZE ,arrayOfAllInputs} from "./constants";
+import countSoulutions from "./countSolutions";
 import examineInput from "./examineInput";
 import { puzzleBoard } from "./initBoard"
+import { generateAllPositions,shuffleArray,shuffle2DArray,getRandomClueCount,
 
-const size = 9;
-
-const shuffleArray = () => {
-    const array = Array.from({length:size},(_,i) => i+1);
-    for(let i = array.length - 1 ; i >=  0 ; i--){
-        const j = Math.floor(Math.random() * (i+1));
-        [array[i],array[j]] = [array[j],array[i]];
-    }
-    return array;
-}
+ } from "./utils";
 
 const createSolvedBoard = (board) => {
 
-    for(let row = 0;row < size ; row++){
-        for(let col = 0; col < size ;col++){
+    for(let row = 0;row < SIZE ; row++){
+        for(let col = 0; col < SIZE ;col++){
 
             if(board[row][col].value === null){
 
-                const array = shuffleArray();
+                const array = shuffleArray(arrayOfAllInputs);
 
                 for(const value of array){
                     board[row][col].value = value;
@@ -43,65 +37,57 @@ const createSolvedBoard = (board) => {
     return true;
 }
 
-const randBetween = (min,max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
 
-const getRandomClueCount = (level) => {
-    switch (level.toLowerCase()) {
-        case "easy":return randBetween(50,60);
-        case "medium":return randBetween(40,49);
-        case "hard":return randBetween(35,39);
-        case "expert":return randBetween(30,34);
-        case "master":return randBetween(25,29);
-        case "extreme":return randBetween(20,24);
-        default:return 36;
-    }
-}
+const removeValues = (board,targetedClues) => {
 
-const removeValues = (board,clues) => {
-    const totalCells = size*size;
-    let cellsToRemove = totalCells - clues;
-    let attempts = 200;
-    let removed = 0;
+    const positions = generateAllPositions();      //2D array of all positions {row,col}
+    
+    const shuffled2DArray = shuffle2DArray(positions);
 
-    while( removed < cellsToRemove && attempts > 0 ){
+    const totalCells = SIZE*SIZE;
+    let currentClues = totalCells;
 
-        const r =  Math.floor(Math.random() * size);
-        const c =  Math.floor(Math.random() * size);
+    for(let i = 0 ; i < shuffled2DArray.length ; i++){
+        for(const {row,col} of shuffled2DArray[i]){
 
-        if(board[r][c].value !== null){
-            board[r][c].value = null;
-            board[r][c].inputDisabled = false;
-            board[r][c].isPuzzlePart = false;
-            removed++;
+            if(currentClues <= targetedClues) break;
+
+            const temp = board[row][col].value ;
+            board[row][col].value = null;
+
+            const solutionCount = countSoulutions(board);
+            if(solutionCount != 1){
+                board[row][col].value = temp;
+            }
+            else{
+                board[row][col].inputDisabled = false;
+                board[row][col].isPuzzlePart = false;
+                currentClues--;
+            }
         }
-        else{
-            attempts--;
-        }
-    }
-
-    if (removed < cellsToRemove) {
-        console.warn(`Could only remove ${removed} cells out of ${cellsToRemove}`);
     }
 }
 
 const createPuzzle = (level) => {
 
-    let attempts = 5;
+    let attempts = 10;
 
-    let board = puzzleBoard(size);
+    let board = puzzleBoard(SIZE);
+
+    let solvedBoard = null;
 
     while(attempts > 0){
-        if(createSolvedBoard(board)){
-            removeValues(board,getRandomClueCount(level));
-            return board;
+        if(createSolvedBoard(board)){   //fills board with valid solution
+            solvedBoard = board.map(row => row.map(cell => ({ ...cell })));
+            removeValues(board,getRandomClueCount(level));//already accounts for uniqureness
+            return [board,solvedBoard]; //unique board
         }
-        board = puzzleBoard(size);
+        board = puzzleBoard(SIZE);//try a new baord
         attempts--;
     }
     console.error("couldnt build a random board");
-    return puzzleBoard(size);
+    const nboard = puzzleBoard(SIZE);
+    return [nboard,nboard];
 }
 
 

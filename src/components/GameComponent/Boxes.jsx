@@ -9,7 +9,9 @@ const Boxes = ({onClick,boxprop}) => {
   return (
     <div 
       className={`
-        ${activeClass} ${highlightClass} ${wrongChoiceHighlightClass} ${sameValueHighlightedClass} 
+        ${activeClass ? activeClass : (wrongChoiceHighlightClass || '')}
+        ${highlightClass} 
+        ${sameValueHighlightedClass} 
         ${isCorrectClass}
         border border-gray-400/20
         transition-all duration-100 ease-in 

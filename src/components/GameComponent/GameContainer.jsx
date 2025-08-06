@@ -21,6 +21,7 @@ const GameContainer = ({level}) => {
     const [result, setResult] = useState(null);
     const [hints, setHints] = useState(3);
     const [solutionUsed, setSolutionUsed] = useState(false);
+    const [solvedBoard , setSolvedBoard]  = useState([]);
 
     const cellStackRef = useRef(new Stack());
     const savedBoardState = useRef(initBoard(SIZE));
@@ -268,18 +269,17 @@ const GameContainer = ({level}) => {
       }
   }
   
-  sudokuSolver(clonedBoard);
+  clonedBoard[cell.row][cell.col] = solvedBoard[cell.row][cell.col];
   setactiveCell({...cell,value:clonedBoard[cell.row][cell.col].value});
   setboard(prev => highlight(prev,cell.row,cell.col))
   updateBoard(clonedBoard[cell.row][cell.col].value,false,false,cell);
-
-
 }
 
   const addPuzzle = async () => {
-    const puzzle = await getPuzzle();
+    const [puzzle,solvedBoard] = await getPuzzle();
     savedBoardState.current = puzzle;
     setboard(puzzle);
+    setSolvedBoard(solvedBoard);
   }
 
   const getPuzzle = () => {

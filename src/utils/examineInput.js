@@ -2,7 +2,6 @@ import { SIZE } from "./constants";
 
 const examineInput = (board,cell,value) => {
     if(value === null) return true;
-    let check = true;
     const r = cell.row;
     const c = cell.col;
  
@@ -19,14 +18,13 @@ const examineInput = (board,cell,value) => {
         if((i != c &&  board[r][i].value == value ) ||
              (i != r && board[i][c].value == value) ||
                (!isSameRC && board[sr][sc].value == value )  ){ //leaves active row and col
-            check = false;
-            break;
+                return false;
         }
     }
-    return check;
+    return true;
 }
 
-export const highlightMatchingValues = (board,cell,setIsFilled) => {
+export const highlightMatchingValues = (board,cell) => {
     const r = cell.row;
     const c = cell.col;
     let isFilled = true;
