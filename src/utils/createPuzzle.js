@@ -49,21 +49,23 @@ const randBetween = (min,max) => {
 
 const getRandomClueCount = (level) => {
     switch (level.toLowerCase()) {
-        case "easy":return randBetween(35,50);
-        case "medium":return randBetween(34,38);
-        case "hard":return randBetween(30,33);
-        case "expert":return randBetween(24,29);
-        case "master":return randBetween(17,23);
-        case "extreme":return randBetween(10,16);
+        case "easy":return randBetween(50,60);
+        case "medium":return randBetween(40,49);
+        case "hard":return randBetween(35,39);
+        case "expert":return randBetween(30,34);
+        case "master":return randBetween(25,29);
+        case "extreme":return randBetween(20,24);
         default:return 36;
     }
 }
 
 const removeValues = (board,clues) => {
     const totalCells = size*size;
-    let clueCells = totalCells - clues;
+    let cellsToRemove = totalCells - clues;
+    let attempts = 200;
+    let removed = 0;
 
-    while( clueCells > 0 ){
+    while( removed < cellsToRemove && attempts > 0 ){
 
         const r =  Math.floor(Math.random() * size);
         const c =  Math.floor(Math.random() * size);
@@ -72,22 +74,34 @@ const removeValues = (board,clues) => {
             board[r][c].value = null;
             board[r][c].inputDisabled = false;
             board[r][c].isPuzzlePart = false;
+            removed++;
         }
-        clueCells--
+        else{
+            attempts--;
+        }
+    }
+
+    if (removed < cellsToRemove) {
+        console.warn(`Could only remove ${removed} cells out of ${cellsToRemove}`);
     }
 }
 
 const createPuzzle = (level) => {
 
-    const board = puzzleBoard(size);
+    let attempts = 5;
 
-    createSolvedBoard(board);
+    let board = puzzleBoard(size);
 
-    removeValues(board,getRandomClueCount(level));
-    
-    return board;
-
-
+    while(attempts > 0){
+        if(createSolvedBoard(board)){
+            removeValues(board,getRandomClueCount(level));
+            return board;
+        }
+        board = puzzleBoard(size);
+        attempts--;
+    }
+    console.error("couldnt build a random board");
+    return puzzleBoard(size);
 }
 
 
