@@ -1,22 +1,18 @@
-import React, { useState } from 'react'
-import GameContainer from './GameComponent/GameContainer'
+import React, { useState } from 'react';
+import GameContainer from './GameComponent/GameContainer';
 import LevelBar from './GameComponent/LevelBar';
 import { DIFFICULTY_LEVELS } from '../utils/constants';
 
 const Main = () => {
-    const [levels, setlevels] = useState(DIFFICULTY_LEVELS);
-    const [activeLevel, setactiveLevel] = useState("Easy");
-    
+  const [levels, setlevels] = useState(DIFFICULTY_LEVELS);
+  const [activeLevel, setactiveLevel] = useState('Easy');
+
   return (
-    <div className='px-6 sm:px-16 md:px-4 lg:px-16 py-4'>
-        <LevelBar
-            levels={levels}
-            activeLevel={activeLevel}
-            onSelectLevel={setactiveLevel}
-            />
-        <GameContainer level={activeLevel}/>
+    <div className="px-6 sm:px-16 md:px-4 lg:px-16 py-4">
+      <LevelBar levels={levels} activeLevel={activeLevel} onSelectLevel={setactiveLevel} />
+      <GameContainer level={activeLevel} />
     </div>
-  )
-}
+  );
+};
 
 export default Main;

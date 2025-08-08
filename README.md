@@ -27,18 +27,15 @@ This game includes a fully custom-built Sudoku puzzle engine that guarantees **v
 ### Step-by-Step:
 
 1. **Solved Board Generation**
-
    - A full Sudoku board is filled using a backtracking algorithm.
    - The board is randomized but legal, forming a valid solution.
 
 2. **Deep Copy**
-
    - Before removing values, the solution board is deeply copied to preserve the final answer for:
      - Hint logic
      - Final victory validation
 
 3. **Clue Removal With Uniqueness Guarantee**
-
    - A list of all cell positions is generated and shuffled.
    - For each cell:
      - Temporarily remove its value.
