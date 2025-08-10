@@ -2,6 +2,10 @@ import { SIZE } from './constants';
 //Time util
 export const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+//produces deep clone of board 
+export const deepCloneBoard = (board) => {
+  return board.map((row) => row.map((cell) => ({ ...cell })));
+}
 //sudoku logic helper
 export const isCurrentSectionFilled = (board, cell) => {
   const sr = cell.subGridRow;

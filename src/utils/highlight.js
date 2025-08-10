@@ -1,6 +1,6 @@
+import { SIZE } from "./constants";
 //highlight current rows , columns and the current 3x3 grid
 
-const size = 9;
 export const highlight = (board, r, c) => {
   let updatedArr = board.map((row) =>
     row.map((cell) => ({
@@ -15,7 +15,7 @@ export const highlight = (board, r, c) => {
   sr = updatedArr[r][c].subGridRow;
   sc = updatedArr[r][c].subGridCol;
 
-  for (let i = 0; i < size; i++) {
+  for (let i = 0; i < SIZE; i++) {
     //highlight rows and cols
     updatedArr[r][i].highlighted = true;
     updatedArr[i][c].highlighted = true;

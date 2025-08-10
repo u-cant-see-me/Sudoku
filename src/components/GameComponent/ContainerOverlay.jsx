@@ -38,11 +38,11 @@ const ContainerOverlay = ({ result, setState, setboard, savedBoardState, restart
   ];
   return (
     <div
-      className="absolute h-full w-full  z-[101]
+      className="absolute top-0 h-full w-full  z-[101]
                     bg-gray-200/50 flex  justify-center 
     "
     >
-      <div className="h-1/2 w-1/2 bg-indigo-100 p-4 mt-6 rounded-md shadow-2xl">
+      <div className="h-1/4 lg:h-1/2 w-1/2 bg-indigo-100 p-4 mt-6 rounded-md shadow-2xl">
         <p className="text-center text-2xl font-bold">{result === 'won' ? 'YOU WIN!!!' : 'Game Over'}</p>
         {result === 'lost' && <p className="text-center text-white text-lg bg-red-400">You lost the game</p>}
         <div className="flex gap-4 justify-center mt-4 font-bold text-lg text-indigo-200">

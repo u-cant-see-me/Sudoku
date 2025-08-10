@@ -2,7 +2,7 @@ import { SIZE, arrayOfAllInputs } from './constants';
 import countSoulutions from './countSolutions';
 import examineInput from './examineInput';
 import { puzzleBoard } from './initBoard';
-import { generateAllPositions, shuffleArray, shuffle2DArray, getRandomClueCount } from './utils';
+import { generateAllPositions, shuffleArray, shuffle2DArray, getRandomClueCount, deepCloneBoard } from './utils';
 
 const createSolvedBoard = (board) => {
   for (let row = 0; row < SIZE; row++) {
@@ -65,7 +65,7 @@ const createPuzzle = (level) => {
   while (attempts > 0) {
     if (createSolvedBoard(board)) {
       //fills board with valid solution
-      solvedBoard = board.map((row) => row.map((cell) => ({ ...cell })));
+      solvedBoard = deepCloneBoard(board);
       removeValues(board, getRandomClueCount(level)); //already accounts for uniqureness
       return [board, solvedBoard]; //unique board
     }

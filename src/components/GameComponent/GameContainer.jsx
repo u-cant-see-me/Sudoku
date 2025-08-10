@@ -6,7 +6,7 @@ import Stack from '../../utils/stack';
 import { highlight } from '../../utils/highlight';
 import initBoard from '../../utils/initBoard';
 import createPuzzle from '../../utils/createPuzzle';
-import { wait, isCurrentSectionFilled } from '../../utils/utils';
+import { wait, isCurrentSectionFilled, deepCloneBoard } from '../../utils/utils';
 import ContainerOverlay from './ContainerOverlay';
 import { SIZE, maxHints, maxMistakes } from '../../utils/constants';
 
@@ -94,9 +94,9 @@ const GameContainer = ({ level }) => {
       if (!undoValue) {
         cellStackRef.current.push(isErased ? { ...cell, isErased: true } : { ...cell, value: inputValue });
       }
-
+      setactiveCell(cellStackRef.current.peek());
       setboard((prevBoard) => {
-        const newBoard = prevBoard.map((row) => row.map((cell) => ({ ...cell })));
+        const newBoard = deepCloneBoard(prevBoard);
 
         const isSafe = examineInput(prevBoard, cell, inputValue);
 
@@ -177,7 +177,7 @@ const GameContainer = ({ level }) => {
     for (let row = 0; row < 4; row++) {
       for (let col = 0; col < 3; col++) {
         setboard((prevBoard) => {
-          const newBoard = prevBoard.map((row) => row.map((cell) => ({ ...cell })));
+          const newBoard = deepCloneBoard(prevBoard);
 
           if (row < 3) {
             newBoard[sr + row][sc + col].highlighted = false;
@@ -204,7 +204,7 @@ const GameContainer = ({ level }) => {
     for (let row = 0; row < SIZE + 1; row++) {
       for (let col = 0; col < SIZE; col++) {
         setboard((prevBoard) => {
-          const newBoard = prevBoard.map((row) => row.map((cell) => ({ ...cell })));
+          const newBoard = deepCloneBoard(prevBoard);
 
           if (row < SIZE) {
             newBoard[row][col].highlighted = false;
@@ -237,13 +237,18 @@ const GameContainer = ({ level }) => {
         clonedBoard[cell.row][cell.col].value = null;
       }
     } else {
+      let found = false;
       for (let row = 0; row < SIZE; row++) {
         for (let col = 0; col < SIZE; col++) {
+          console.log(clonedBoard[row][col].value)
           if (clonedBoard[row][col].value === null) {
             cell = clonedBoard[row][col];
+            found = true;
             break;
           }
         }
+        if(found) break;
+
       }
     }
 
