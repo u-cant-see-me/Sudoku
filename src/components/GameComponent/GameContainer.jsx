@@ -240,7 +240,6 @@ const GameContainer = ({ level }) => {
       let found = false;
       for (let row = 0; row < SIZE; row++) {
         for (let col = 0; col < SIZE; col++) {
-          console.log(clonedBoard[row][col].value)
           if (clonedBoard[row][col].value === null) {
             cell = clonedBoard[row][col];
             found = true;
